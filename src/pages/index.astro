@@ -1,8 +1,22 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { getSession } from "auth-astro/server";
+
+const session = await getSession(Astro.request);
 const pageTitle = "Home Page";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <h2>My awesome blog subtitle</h2>
+  <button id="login" class="border border-solid border-black">Login</button>
+  <button id="logout" class="border border-solid border-black">Logout</button>
+  {session ? <p>Welcome {session.user?.name}</p> : <p>Not logged in</p>}
 </BaseLayout>
+
+<script>
+  const { signIn, signOut } = await import("auth-astro/client");
+  document.querySelector<HTMLButtonElement>("#login")!.onclick = () =>
+    signIn("github");
+  document.querySelector<HTMLButtonElement>("#logout")!.onclick = () =>
+    signOut();
+</script>
