@@ -12,6 +12,7 @@
       "@pages/*": ["src/pages/*"],
       "@layouts/*": ["src/layouts/*"],
       "@content/*": ["src/content/*"]
-    }
+    },
+    "strictNullChecks": true
   }
 }
