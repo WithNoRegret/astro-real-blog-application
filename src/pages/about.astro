@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 
 const pageTitle = "About Me";
 
@@ -41,7 +41,13 @@ const goal = 3;
   </ul>
   <p>My skills are:</p>
   <ul>
-    {skills.map((skill) => <li class="text-[#0066CC] dark:text-white font-bold uppercase">{skill}</li>)}
+    {
+      skills.map((skill) => (
+        <li class="font-bold uppercase text-[#0066CC] dark:text-white">
+          {skill}
+        </li>
+      ))
+    }
   </ul>
   {happy && <p>I am happy to be learning Astro!</p>}
 
